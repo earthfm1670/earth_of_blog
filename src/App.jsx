@@ -40,28 +40,32 @@ function Navbar() {
 function HeroSection() {
   return (
     <>
-      <div className="flex flex-col">
-        <div>
-          <h1 className="text-4xl my-7 font-poppins font-medium">
+      <div className="flex flex-col sm:flex sm:flex-row sm:justify-center items-center">
+        <div className=" sm:basis-1/3">
+          <h1 className="text-4xl my-7 font-poppins font-medium sm:text-right">
             Stay Informed, Stay Inspired
           </h1>
-          <p className="text-[#75716B] font-poppins">
+          <p className="text-[#75716B] font-poppins sm:text-sm sm:text-right">
             Discover a World of Knowledge at your Fingertips. Your Daily Dose of
             Inspiration and Information.
           </p>
         </div>
-        <div className="overflow-hidden w-30 h-auto sm:w-auto sm:h-auto">
-          <img src="./../hooman.jpeg" className="my-10"></img>
+        <div className="w-30 h-auto sm:w-auto sm:auto sm:basis-1/3 sm:m-10">
+          <img src="./../hoomancrop.jpeg" className="my-10"></img>
         </div>
-        <div className="flex flex-col items-start">
-          <h6 className="font-poppins text-sm text-[#75716B]">-Author</h6>
-          <h3 className="font-poppins my-3 text-xl font-medium">Thompson P.</h3>
-          <p className="font-poppins text-left text-[#75716B] my-3">
+        <div className="flex flex-col items-start sm:basis-1/3">
+          <h6 className="font-poppins text-sm text-[#75716B] sm:my-1">
+            -Author
+          </h6>
+          <h3 className="font-poppins my-3 text-xl font-medium sm:my-0">
+            Thompson P.
+          </h3>
+          <p className="font-poppins text-left text-[#75716B] my-3 sm:text-sm">
             I am a pet enthusiast and freelance writer who specializes in animal
             behavior and care. With a deep love for cats, I enjoy sharing
             insights on feline companionship and wellness.
           </p>
-          <p className="font-poppins text-left text-[#75716B]">
+          <p className="font-poppins text-left text-[#75716B] sm:text-sm">
             When i'm not writing, I spends time volunteering at my local animal
             shelter, helping cats find loving homes.
           </p>
