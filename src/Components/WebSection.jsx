@@ -64,8 +64,8 @@ export function HeroSection() {
 export function Footer() {
   return (
     <>
-      <footer className="bg-[#EFEEEB] my-5 py-5 px-16 sm:flex sm:justify-around sm:items-center sm:my-0 sm:h-24">
-        <div className="flex justify-between sm:gap-5 py-3">
+      <footer className="bg-[#EFEEEB] my-5 py-5 sm:flex sm:justify-between sm:items-center sm:my-5 sm:h-16 sm:px-10">
+        <div className="flex justify-center gap-5 py-3 sm:gap-5">
           <div>Get in touch</div>
           <div className="flex gap-2">
             <Linkedin />
