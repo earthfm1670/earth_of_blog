@@ -37,7 +37,7 @@ export function HeroSection() {
           </p>
         </div>
         <div className="w-30 h-auto sm:w-auto sm:auto sm:basis-1/3 sm:m-10">
-          <img src="./../hoomancrop.jpeg" className="my-10"></img>
+          <img src="./../hoomancrop.jpeg" className="my-10 rounded-2xl"></img>
         </div>
         <div className="flex flex-col items-start sm:basis-1/3">
           <h6 className="font-poppins text-sm text-[#75716B] sm:my-1">

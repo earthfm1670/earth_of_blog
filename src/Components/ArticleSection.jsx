@@ -116,7 +116,7 @@ function BlogCard(props) {
     <div className="flex flex-col gap-4 px-4 py-6">
       <a href="#" className="relative h-[212px] sm:h-[360px]">
         <img
-          className="w-full h-full object-cover rounded-md"
+          className="w-full h-full object-cover rounded-2xl"
           src={props.imgLink}
           alt="Understanding Cat Behavior: Why Your Feline Friend Acts the Way They Do"
         />
