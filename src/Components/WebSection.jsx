@@ -26,7 +26,7 @@ export function Navbar() {
 export function HeroSection() {
   return (
     <>
-      <div className="flex flex-col sm:flex sm:flex-row sm:justify-center items-center">
+      <div className="flex flex-col px-4 sm:flex sm:flex-row sm:justify-center items-center">
         <div className=" sm:basis-1/3">
           <h1 className="text-4xl my-7 font-poppins font-medium sm:text-right">
             Stay Informed, Stay Inspired

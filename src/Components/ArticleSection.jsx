@@ -32,7 +32,7 @@ import {
 function ArticleSearch() {
   return (
     <>
-      <h1 className="mt-16 mb-5 text-left font-bold text-2xl">
+      <h1 className="mt-16 mb-5 text-left font-bold text-2xl px-4">
         Latest Article
       </h1>
       <div className="bg-[#EFEEEB] py-5 pt-10 px-5 mb-10 sm:flex sm:justify-between sm:items-center sm:py-3">
@@ -55,6 +55,7 @@ function ArticleSearch() {
           />
         ))}
       </article>
+      <ViewMore />
     </>
   );
 }
@@ -112,7 +113,7 @@ function Dropdown() {
 
 function BlogCard(props) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 px-4 py-6">
       <a href="#" className="relative h-[212px] sm:h-[360px]">
         <img
           className="w-full h-full object-cover rounded-md"
@@ -122,7 +123,7 @@ function BlogCard(props) {
       </a>
       <div className="flex flex-col">
         <div className="flex">
-          <span className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mb-2">
+          <span className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-500 mb-2">
             {props.category}
           </span>
         </div>
@@ -131,7 +132,7 @@ function BlogCard(props) {
             {props.title}
           </h2>
         </a>
-        <p className="text-muted-foreground text-sm mb-4 flex-grow line-clamp-3">
+        <p className="text-muted-foreground text-[#75716B] text-sm mb-4 flex-grow line-clamp-2 text-left">
           {props.description}
         </p>
         <div className="flex items-center text-sm">
@@ -142,10 +143,20 @@ function BlogCard(props) {
           />
           <span>{props.author}</span>
           <span className="mx-2 text-gray-300">|</span>
-          <span>{props.date}</span>
+          <span className="mx-2 text-[#75716B]">{props.date}</span>
         </div>
       </div>
     </div>
+  );
+}
+
+function ViewMore() {
+  return (
+    <>
+      <div className="py-6 sm:py-14">
+        <button className="underline font-normal">View more</button>
+      </div>
+    </>
   );
 }
 
