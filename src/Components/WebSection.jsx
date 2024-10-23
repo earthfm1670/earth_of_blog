@@ -1,4 +1,12 @@
 import { Linkedin, Github, Bitcoin } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
   return (
@@ -15,7 +23,21 @@ export function Navbar() {
               {" "}
               Sign up
             </button>
-            <img src="./../Vector.png" className="block sm:hidden"></img>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <img src="./../Vector.png" className="block sm:hidden"></img>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-screen my-2 py-5 px-5 flex flex-col gap-6">
+                <button className="bg-white border-2 border-black rounded-full py-4 text-sm w-full sm:hidden">
+                  Log in
+                </button>
+                <button className="bg-black border-2 border-gray-300 rounded-full py-4 w-full text-white text-sm sm:hidden">
+                  {" "}
+                  Sign up
+                </button>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </nav>
@@ -26,7 +48,7 @@ export function Navbar() {
 export function HeroSection() {
   return (
     <>
-      <div className="flex flex-col px-4 sm:flex sm:flex-row sm:justify-center items-center">
+      <div className="flex flex-col px-20 sm:flex sm:flex-row sm:justify-center items-center">
         <div className=" sm:basis-1/3">
           <h1 className="text-4xl my-7 font-poppins font-medium sm:text-right">
             Stay Informed, Stay Inspired

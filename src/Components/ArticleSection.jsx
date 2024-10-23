@@ -14,22 +14,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
-
 function ArticleSearch() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   const [filteredItems, setFilteredItems] = useState("Highlight");
@@ -39,16 +23,16 @@ function ArticleSearch() {
       : blogPosts.filter((x) => x.category === filteredItems);
   return (
     <>
-      <h1 className="mt-16 mb-5 text-left font-bold text-2xl px-4">
+      <h1 className="text-left font-bold text-2xl px-5 sm:px-24">
         Latest Article
       </h1>
-      <div className="bg-[#EFEEEB] py-5 pt-10 px-5 mb-10 sm:flex sm:justify-between sm:items-center sm:py-3">
+      <div className="bg-[#EFEEEB] py-5 pt-10 px-5 mb-10 sm:flex sm:justify-between sm:items-center sm:py-3 sm:mx-20">
         {/* MenuButton */}
         <div className="hidden sm:block ">
           {categories.map((item, index) => (
             <button
               key={index}
-              className="sm:text-[#75716B] sm:p-3 sm:hover:bg-[#DAD6D1] sm:rounded-lg"
+              className="sm:text-[#75716B] sm:p-3 sm:hover:bg-[#F5F5F4] sm:rounded-lg sm:focus:bg-[#D9D6D1]"
               onClick={() => setFilteredItems(item)}
             >
               {item}
@@ -80,7 +64,7 @@ function ArticleSearch() {
           {/* End of dropdown */}
         </div>
       </div>
-      <article className="sm:grid sm:grid-cols-2 sm:gap-8 sm:px-4 sm:px-0">
+      <article className="sm:grid sm:grid-cols-2 sm:gap-8 sm:px-4 sm:px-0 sm:mx-20">
         {filteredPost.map((item) => (
           <BlogCard
             imgLink={item.image}
