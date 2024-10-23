@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import * as React from "react";
 import { blogPosts } from "./../data/blogPosts";
+import { useState } from "react";
 
 import {
   Select,
@@ -30,21 +31,57 @@ import {
 } from "@/components/ui/menubar";
 
 function ArticleSearch() {
+  const categories = ["Highlight", "Cat", "Inspiration", "General"];
+  const [filteredItems, setFilteredItems] = useState("Highlight");
+  const filteredPost =
+    filteredItems === "Highlight"
+      ? blogPosts
+      : blogPosts.filter((x) => x.category === filteredItems);
   return (
     <>
       <h1 className="mt-16 mb-5 text-left font-bold text-2xl px-4">
         Latest Article
       </h1>
       <div className="bg-[#EFEEEB] py-5 pt-10 px-5 mb-10 sm:flex sm:justify-between sm:items-center sm:py-3">
-        <MenuButton />
+        {/* MenuButton */}
+        <div className="hidden sm:block ">
+          {categories.map((item, index) => (
+            <button
+              key={index}
+              className="sm:text-[#75716B] sm:p-3 sm:hover:bg-[#DAD6D1] sm:rounded-lg"
+              onClick={() => setFilteredItems(item)}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+        {/* END of MenuButton */}
         <SearchBar />
         <div className="my-5 sm:hidden">
           <h2 className="text-left ml-1 mb-1 text-gray-500">Category</h2>
-          <Dropdown />
+          {/* Dropdown */}
+          <div className="sm:hidden w-full">
+            <Select
+              value={filteredItems}
+              onValueChange={(value) => setFilteredItems(value)}
+            >
+              <SelectTrigger className="w-full py-3 rounded-sm text-muted-foreground">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map((item, index) => (
+                  <SelectItem key={index} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          {/* End of dropdown */}
         </div>
       </div>
       <article className="sm:grid sm:grid-cols-2 sm:gap-8 sm:px-4 sm:px-0">
-        {blogPosts.map((item) => (
+        {filteredPost.map((item) => (
           <BlogCard
             imgLink={item.image}
             category={item.category}
@@ -59,10 +96,8 @@ function ArticleSearch() {
     </>
   );
 }
-
-const categories = ["Highlight", "Cat", "Inspiration", "General"];
-
 function MenuButton() {
+  const categories = ["Highlight", "Cat", "Inspiration", "General"];
   return (
     <>
       <div className="hidden sm:block ">
@@ -91,6 +126,7 @@ function SearchBar() {
 }
 
 function Dropdown() {
+  const categories = ["Highlight", "Cat", "Inspiration", "General"];
   return (
     <>
       <div className="sm:hidden w-full">
