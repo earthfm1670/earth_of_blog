@@ -2,7 +2,8 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import * as React from "react";
 import { blogPosts } from "./../data/blogPosts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 import {
   Select,
@@ -17,10 +18,40 @@ import {
 function ArticleSearch() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   const [filteredItems, setFilteredItems] = useState("Highlight");
-  const filteredPost =
-    filteredItems === "Highlight"
-      ? blogPosts
-      : blogPosts.filter((x) => x.category === filteredItems);
+  const [response, setResponse] = useState([]);
+  const [articleLimit, setArticleLimit] = useState(6);
+  const [loading, setLoading] = useState(false);
+  // const filteredPost =
+  //   filteredItems === "Highlight"
+  //     ? response
+  //     : response.filter((x) => x.category === filteredItems);
+
+  const fetchResponse = async () => {
+    try {
+      const url =
+        filteredItems === "Highlight"
+          ? `https://blog-post-project-api.vercel.app/posts?limit=${articleLimit}`
+          : `https://blog-post-project-api.vercel.app/posts?category=${filteredItems}&limit=${articleLimit}`;
+      const result = await axios.get(url);
+      setResponse(result.data.posts);
+      setLoading(false);
+    } catch (error) {
+      console.log("Error fetching posts:", error);
+      setLoading(false);
+    }
+  };
+
+  const handleViewMore = () => {
+    if (articleLimit < 30) {
+      setArticleLimit((prev) => prev + 6);
+    }
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    fetchResponse();
+  }, [filteredItems, articleLimit]);
+
   return (
     <>
       <h1 className="text-left font-bold text-2xl px-5 sm:px-24">
@@ -65,21 +96,26 @@ function ArticleSearch() {
         </div>
       </div>
       <article className="sm:grid sm:grid-cols-2 sm:gap-8 sm:px-4 sm:px-0 sm:mx-20">
-        {filteredPost.map((item) => (
+        {response.map((item) => (
           <BlogCard
             imgLink={item.image}
             category={item.category}
             title={item.title}
             description={item.description}
             author={item.author}
-            date={item.date}
+            date={new Date(item.date).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
           />
         ))}
       </article>
-      <ViewMore />
+      <ViewMore addLimit={handleViewMore} isLoading={loading} />
     </>
   );
 }
+
 function MenuButton() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   return (
@@ -170,11 +206,13 @@ function BlogCard(props) {
   );
 }
 
-function ViewMore() {
+function ViewMore({ addLimit, isLoading }) {
   return (
     <>
       <div className="py-6 sm:py-14">
-        <button className="underline font-normal">View more</button>
+        <button className="underline font-normal" onClick={addLimit}>
+          {isLoading ? "Loading..." : "View more"}
+        </button>
       </div>
     </>
   );
