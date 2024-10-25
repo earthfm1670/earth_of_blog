@@ -21,6 +21,11 @@ function ArticleSearch() {
   const [response, setResponse] = useState([]);
   const [articleLimit, setArticleLimit] = useState(6);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchResponse();
+  }, [filteredItems, articleLimit]);
   // const filteredPost =
   //   filteredItems === "Highlight"
   //     ? response
@@ -46,11 +51,6 @@ function ArticleSearch() {
       setArticleLimit((prev) => prev + 6);
     }
   };
-
-  useEffect(() => {
-    setLoading(true);
-    fetchResponse();
-  }, [filteredItems, articleLimit]);
 
   return (
     <>
@@ -211,10 +211,21 @@ function ViewMore({ addLimit, isLoading }) {
     <>
       <div className="py-6 sm:py-14">
         <button className="underline font-normal" onClick={addLimit}>
-          {isLoading ? "Loading..." : "View more"}
+          {isLoading ? <Spinner /> : "View more"}
         </button>
       </div>
     </>
+  );
+}
+
+export function Spinner() {
+  return (
+    <div className="flex w-full items-center justify-center">
+      <div className="flex flex-col items-center space-y-4">
+        <div className="animate-spin rounded-full border-4 border-gray-300 border-t-gray-900 h-12 w-12" />
+        <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+      </div>
+    </div>
   );
 }
 
