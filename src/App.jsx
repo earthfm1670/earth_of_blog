@@ -1,6 +1,7 @@
 import "./App.css";
-import Home from "./pages/Home.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import ViewPost from "./pages/ViewPost.jsx";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/viewpost" element={<ViewPost />} />
         </Routes>
       </Router>
     </>

@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import {
   Select,
@@ -167,41 +168,54 @@ function Dropdown() {
 }
 
 function BlogCard(props) {
+  const navigate = useNavigate();
+  const goViewPost = () => {
+    navigate("/ViewPost");
+  };
   return (
-    <div className="flex flex-col gap-4 px-4 py-6">
-      <a href="#" className="relative h-[212px] sm:h-[360px]">
-        <img
-          className="w-full h-full object-cover rounded-2xl"
-          src={props.imgLink}
-          alt="Understanding Cat Behavior: Why Your Feline Friend Acts the Way They Do"
-        />
-      </a>
-      <div className="flex flex-col">
-        <div className="flex">
-          <span className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-500 mb-2">
-            {props.category}
-          </span>
-        </div>
-        <a href="#">
-          <h2 className="text-start font-bold text-xl mb-2 line-clamp-2 hover:underline">
-            {props.title}
-          </h2>
-        </a>
-        <p className="text-muted-foreground text-[#75716B] text-sm mb-4 flex-grow line-clamp-2 text-left">
-          {props.description}
-        </p>
-        <div className="flex items-center text-sm">
+    <>
+      <div className="flex flex-col gap-4 px-4 py-6">
+        <a href="#" className="relative h-[212px] sm:h-[360px]">
           <img
-            className="w-8 h-8 rounded-full mr-2"
-            src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg"
-            alt="Tomson P."
+            className="w-full h-full object-cover rounded-2xl"
+            src={props.imgLink}
+            alt="Understanding Cat Behavior: Why Your Feline Friend Acts the Way They Do"
+            onClick={goViewPost}
           />
-          <span>{props.author}</span>
-          <span className="mx-2 text-gray-300">|</span>
-          <span className="mx-2 text-[#75716B]">{props.date}</span>
+        </a>
+        <div className="flex flex-col">
+          <div className="flex">
+            <span
+              className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-500 mb-2"
+              onClick={goViewPost}
+            >
+              {props.category}
+            </span>
+          </div>
+          <a href="#">
+            <h2
+              className="text-start font-bold text-xl mb-2 line-clamp-2 hover:underline"
+              onClick={goViewPost}
+            >
+              {props.title}
+            </h2>
+          </a>
+          <p className="text-muted-foreground text-[#75716B] text-sm mb-4 flex-grow line-clamp-2 text-left">
+            {props.description}
+          </p>
+          <div className="flex items-center text-sm">
+            <img
+              className="w-8 h-8 rounded-full mr-2"
+              src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg"
+              alt="Tomson P."
+            />
+            <span>{props.author}</span>
+            <span className="mx-2 text-gray-300">|</span>
+            <span className="mx-2 text-[#75716B]">{props.date}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
