@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import * as React from "react";
-import { blogPosts } from "./../data/blogPosts";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -218,7 +217,7 @@ function ViewMore({ addLimit, isLoading }) {
   );
 }
 
-export function Spinner() {
+function Spinner() {
   return (
     <div className="flex w-full items-center justify-center">
       <div className="flex flex-col items-center space-y-4">
