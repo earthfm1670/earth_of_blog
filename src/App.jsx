@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/viewpost" element={<ViewPost />} />
+          <Route path="/post/:postId" element={<ViewPost />} />
         </Routes>
       </Router>
     </>

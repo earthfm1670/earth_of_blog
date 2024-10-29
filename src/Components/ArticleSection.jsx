@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
   Select,
@@ -98,6 +98,7 @@ function ArticleSearch() {
       <article className="sm:grid sm:grid-cols-2 sm:gap-8 sm:px-4 sm:px-0 sm:mx-20">
         {response.map((item) => (
           <BlogCard
+            postId={item.id}
             imgLink={item.image}
             category={item.category}
             title={item.title}
@@ -167,10 +168,11 @@ function Dropdown() {
   );
 }
 
-function BlogCard(props) {
+export function BlogCard(props) {
+  const { postId } = useParams();
   const navigate = useNavigate();
   const goViewPost = () => {
-    navigate("/ViewPost");
+    navigate(`/post/${props.postId}`);
   };
   return (
     <>
