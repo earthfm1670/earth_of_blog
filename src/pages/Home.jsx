@@ -1,5 +1,5 @@
-import { Navbar, HeroSection, Footer } from "./../Components/WebSection";
-import ArticleSearch from "./../Components/ArticleSection";
+import { Navbar, HeroSection, Footer } from "../components/WebSection";
+import ArticleSearch from "../components/ArticleSection";
 
 function Home() {
   return (

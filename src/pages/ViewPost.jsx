@@ -1,4 +1,4 @@
-import { Navbar } from "@/Components/WebSection";
+import { Navbar } from "@/components/WebSection";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Markdown from "react-markdown";
