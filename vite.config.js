@@ -10,13 +10,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-build: {
+  build: {
     rollupOptions: {
-      external: ["react", "react-router", "react-router-dom"],
-      output: {
-        globals: {
-          react: "React",
-        },
+      external: [],
+    },
+    output: {
+      globals: {
+        react: "React",
       },
     },
   },
