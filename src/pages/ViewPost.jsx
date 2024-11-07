@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import { useParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.jsx";
 import FacebookIcon from "./../Icons/Facebook_black.svg";
 import LinkedInIcon from "./../Icons/LinkedIN_black.svg";
 import TwitterIcon from "./../Icons/Twitter_black.svg";

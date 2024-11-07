@@ -1,3 +1,4 @@
+
 import { Navbar, HeroSection, Footer } from "../components/WebSection";
 import ArticleSearch from "../components/ArticleSection";
 
