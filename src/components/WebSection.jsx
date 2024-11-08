@@ -13,10 +13,7 @@ export function Navbar() {
     <>
       <nav className="">
         <div className="flex justify-between items-center border-2 m-0 p-2">
-          <img
-            src="./../../public/image/logo.png"
-            className="w-5 h-auto sm:w-10"
-          ></img>
+          <img src="/image/logo.png" className="w-5 h-auto sm:w-10"></img>
 
           <div className="flex gap-x-2 px-3">
             <button className="bg-white border-2 border-gray-300 rounded-[30px] p-2 px-5 text-sm hidden sm:block">
@@ -29,10 +26,7 @@ export function Navbar() {
 
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <img
-                  src="./../../public/image/Vector.png"
-                  className="block sm:hidden"
-                ></img>
+                <img src="/image/Vector.png" className="block sm:hidden"></img>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-screen my-2 py-5 px-5 flex flex-col gap-6">
                 <button className="bg-white border-2 border-black rounded-full py-4 text-sm w-full sm:hidden">
@@ -65,10 +59,7 @@ export function HeroSection() {
           </p>
         </div>
         <div className="w-30 h-auto sm:w-auto sm:auto sm:basis-1/3 sm:m-10">
-          <img
-            src="./../../public/image/hoomancrop.jpeg"
-            className="my-10 rounded-2xl"
-          ></img>
+          <img src="/image/hoomancrop.jpeg" className="my-10 rounded-2xl"></img>
         </div>
         <div className="flex flex-col items-start sm:basis-1/3">
           <h6 className="font-poppins text-sm text-[#75716B] sm:my-1">
