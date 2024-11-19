@@ -181,8 +181,12 @@ function Socials() {
             className="border-black rounded-full w-full mx-4"
             onClick={openDialog} // Opens the dialog when clicked
           >
-            <img src={HappyIcon} className="w-7 h-7" alt="Happy Icon" />
-            321
+            {/* <img src={HappyIcon} className="w-7 h-7" alt="Happy Icon" /> */}
+            <LoginAlert
+              isOpen={isOpen}
+              onClose={closeDialog}
+              className="w-full"
+            />
           </Button>
         </div>
 
@@ -206,7 +210,6 @@ function Socials() {
       </div>
 
       {/* The AlertDialog component */}
-      <LoginAlert isOpen={isOpen} onClose={closeDialog} />
     </>
   );
 }
@@ -236,6 +239,12 @@ function Comment() {
 function LoginAlert({ isOpen, onClose }) {
   return (
     <AlertDialog isOpen={isOpen} onClose={onClose}>
+      <AlertDialogTrigger className="w-11/12">
+        <div className="flex items-center justify-center gap-1">
+          <img src={HappyIcon} className="w-7 h-7" alt="Happy Icon" />
+          <div>321</div>
+        </div>
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Create an account to continue</AlertDialogTitle>
