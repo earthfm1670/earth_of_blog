@@ -11,6 +11,17 @@ import HappyIcon from "./../Icons/happy_light.svg";
 import CopyIcon from "./../Icons/Copy_light.svg";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 function ViewPost() {
   const { postId } = useParams();
@@ -152,35 +163,50 @@ function Spinner() {
 }
 
 function Socials() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Open the dialog
+  const openDialog = () => setIsOpen(true);
+
+  // Close the dialog
+  const closeDialog = () => setIsOpen(false);
+
   return (
     <>
       <div className="bg-[#EFEEEB] py-5 flex flex-col gap-5">
+        {/* Button that triggers the dialog */}
         <div className="w-11/12 flex-grow">
           <Button
             variant="outline"
             className="border-black rounded-full w-full mx-4"
+            onClick={openDialog} // Opens the dialog when clicked
           >
-            <img src={HappyIcon} className="w-7 h-7" />
+            <img src={HappyIcon} className="w-7 h-7" alt="Happy Icon" />
             321
           </Button>
         </div>
+
         <div className="flex items-center justify-center gap-2 w-11/12 mx-4">
           <div className="flex-grow">
             <Button
               variant="outline"
               className="border-black rounded-full w-full"
+              onClick={openDialog} // Open the dialog on click
             >
               <img src={CopyIcon} alt="copyicon" className="w-7 h-7" />
               Copy link
             </Button>
           </div>
           <div className="flex gap-2">
-            <img src={FacebookIcon} alt="facebookicon" />
-            <img src={LinkedInIcon} alt="linkedinicon" />
-            <img src={TwitterIcon} alt="twittericon" />
+            <img src={FacebookIcon} alt="facebookicon" onClick={openDialog} />
+            <img src={LinkedInIcon} alt="linkedinicon" onClick={openDialog} />
+            <img src={TwitterIcon} alt="twittericon" onClick={openDialog} />
           </div>
         </div>
       </div>
+
+      {/* The AlertDialog component */}
+      <LoginAlert isOpen={isOpen} onClose={closeDialog} />
     </>
   );
 }
@@ -204,6 +230,24 @@ function Comment() {
         </div>
       </div>
     </>
+  );
+}
+
+function LoginAlert({ isOpen, onClose }) {
+  return (
+    <AlertDialog isOpen={isOpen} onClose={onClose}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Create an account to continue</AlertDialogTitle>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel onClick={onClose}>Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={onClose}>
+            Create Account
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 
